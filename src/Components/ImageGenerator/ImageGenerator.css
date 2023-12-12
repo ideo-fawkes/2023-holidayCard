@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Public+Sans:wght@400;700&display=swap');
+
+body {
+    background-color: #FFEDD0
+}
+/* 
+rator'>
+            <div className="borderShapesContainer">
+                <img className="borderShape1" src={borderShape1} alt="" />
+                <img className="borderShape2" src={ */
+
+
+.borderShapesContainer {
+}
+.borderShapesContainer img{
+    position: absolute;
+    z-index: -20;
+    transition: transform 0.8s;
+}
+
+.borderShape1 {
+    top: 547px;
+    right: -420px;
+}
+.borderShape2 {
+    top: -58px;
+    right: -98px;
+}
+.borderShape6 {
+    top: 195px;
+    right: 43px;
+}
+.borderShape3 {
+    top: 48px;
+    left: -38px;
+}
+.borderShape4 {
+    top: 766px;
+    left: -209px;
+}
+.borderShape5 {
+    top: 366px;
+    left: -60px;
+}
+
+
+.borderShapesContainer.loading .borderShape1 {
+    transform: translate(-100px, 100px) rotate(-30deg);
+    transition: transform 0.8s 0.1s;
+}
+.borderShapesContainer.loading .borderShape2 {
+    transform: rotate(20deg);
+    transition: transform 0.9s 0.1s;
+}
+.borderShapesContainer.loading .borderShape6 {
+    transform: translate(-50px, 10px);
+}
+.borderShapesContainer.loading .borderShape3 {
+    transform: translate(100px, 0px) rotate(34deg);
+    transition: transform 0.7s 0.05s;
+}
+.borderShapesContainer.loading .borderShape4 {
+    transform: translate(60px, 0px) rotate(14deg);
+    transition: transform 0.75s 0.02s;
+}
+.borderShapesContainer.loading .borderShape5 {
+    transform: translate(30px, 0px) rotate(-14deg);
+    transition: transform 0.6s 0.02s;
+}
+.borderShapesContainer.imageCreated .borderShape1, 
+    .borderShapesContainer.imageCreated .borderShape2, 
+    .borderShapesContainer.imageCreated .borderShape6, 
+    .borderShapesContainer.imageCreated .borderShape3, 
+    .borderShapesContainer.imageCreated .borderShape4, 
+    .borderShapesContainer.imageCreated .borderShape5 {
+        transform: none;
+    }
+
+.borderShapesContainer.imageCreated .borderShape1 {
+    transform: rotate(-120deg);
+}
+.borderShapesContainer.imageCreated .borderShape2 {
+    transform: translate(0px, -80px) rotate(180deg);
+}
+.borderShapesContainer.imageCreated .borderShape6 {
+    transform: translate(20px, -10px);
+}
+.borderShapesContainer.imageCreated .borderShape3 {
+    transform: rotate(204deg);
+}
+.borderShapesContainer.imageCreated .borderShape4 {
+    transform: translate(0px,60px) rotate(-180deg);
+}
+.borderShapesContainer.imageCreated .borderShape5 {
+    transform: translate(0px, 0px) rotate(0deg);
+}
+
+.borderShapesContainer.uploading .borderShape1 {
+    transform: translate(50px, 0px) rotate(-130deg) scale(0.7);
+}
+.borderShapesContainer.uploading .borderShape2 {
+    transform: translate(0px, -80px) rotate(180deg) scale(0.7);
+}
+.borderShapesContainer.uploading .borderShape6 {
+    transform: translate(20px, -10px) scale(0.7);
+}
+.borderShapesContainer.uploading .borderShape3 {
+    transform: rotate(204deg) scale(0.7);
+}
+.borderShapesContainer.uploading .borderShape4 {
+    transform: translate(0px,60px) rotate(-180deg) scale(0.7);
+}
+.borderShapesContainer.uploading .borderShape5 {
+    transform: translate(0px, 0px) rotate(0deg) scale(0.7);
+}
+
+
+.penContainer{
+    position: absolute;
+    top: 300px;
+    z-index: 20;
+    transform: translate(220px) rotate(-50deg);
+    transition: transform 0.3s;
+    pointer-events: none;
+}
+
+
+.penBody {
+    transition: transform 0.3s;
+}
+
+.penBody:hover {
+    transform: rotate(5deg);
+}
+
+.penContainer {
+    /* background: rgba(0, 0, 0, 0.05); */
+}
+
+.penContainer.loading .penBody {
+    transform: translate(90px, -90px) rotate(-20deg);
+    transition: transform 0.6s;
+}
+
+.penContainer.drawingLoop {
+    transform: translate(220px) rotate(-40deg);
+}
+
+.penCap {
+    visibility: hidden;
+    transform: translateX(140px);
+}
+
+.penContainer.animateLoading .penBody {
+    transform: rotate(230deg) translate(270px, 120px);
+    animation: penAnimation 3s 0.6s forwards;
+}
+
+.penContainer.picking {
+    opacity: 0;
+}
+
+/* @keyframes loadingPen {
+    0% {
+        transform: translate(90px, -90px) rotate(-20deg);
+    }
+    50% {
+        transform: translate(90px, -150px) rotate(-10deg);
+    }
+    100% {
+        transform: translate(90px, -90px) rotate(-20deg);
+    }
+} */
+/* 
+.penContainer.imageCreated .penBody {
+    transform: rotate(230deg) translate(270px, -200px) scale(1.5);
+}
+
+.penContainer.imageCreated .penBody {
+    transform: rotate(230deg) translate(270px, -500px) scale(1);
+} */
+
+@keyframes penAnimation {
+
+    25% {
+        transform: rotate(230deg) translate(270px, -200px) scale(1.5);
+    }
+    50% {
+        transform: rotate(230deg) translate(270px, -500px) scale(1);
+    }
+    100% {
+        transform: rotate(180deg) translate(270px, -150px);
+    }
+}
+
+
+.ai-image-generator {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    gap: 30px;
+    /* background-color: #FFEDD0; */
+}
+
+.image {
+    background-color: red;
+    margin: 10px;
+    top: 0px;
+    left: -200px;
+    width: 400px;
+    mix-blend-mode: multiply;
+    /* position: relative; */
+    position: absolute;
+    z-index: 2;
+}
+
+#imageid {
+    position: absolute;
+    width: 300px;
+    padding: 30px;
+    transition: clip-path 1.8s 0.65s;
+    clip-path: inset(0% 0px 0% 0px);
+    /* background: blue; */
+}
+
+.image.not-loaded #imageid{
+    /* display: none; */
+    clip-path: inset(0% 0px 100% 0px);
+}
+
+.shapeBox {
+    /* background: red; */
+    /* width: 400px; */
+    /* display: none; */
+    position: absolute;
+    top: -30px;
+}
+
+.shapeBox img {
+     width: 460px;;
+}
+
+.header {
+    font-size: 36px;
+    font-weight: 500;
+    padding-bottom: 30px;
+    width: 600px;
+    position: absolute;
+    top: 200px;
+    text-align: center;
+    font-family: 'Dela Gothic One', sans-serif;
+}
+
+.header span {
+    /* color: red; */
+    /* font-weight: 600; */
+}
+
+
+
+.search-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+.search-box.loading {
+    transform: scale(1.15) translateY(-20px);
+    box-shadow: 0px 15px 0px 0px rgba(0, 0, 0, 0.05);
+    transition: transform 0.8s, box-shadow 0.8s;
+}
+
+.search-box.imageCreated {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+.search-box {
+    position: absolute;
+    top: 300px;
+    display: flex;
+    width: 380px;
+    height: 380px;
+    justify-content: space-around;
+    align-items: center;
+    border: 10px solid #353535;
+    background: #DEF009;
+    text-align: center;
+    box-shadow: 7px 15px 0px 0px rgba(0, 0, 0, 0.25);
+    transform: rotate(2deg);
+    margin-bottom: 60px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.search-box.picking {
+    border: 10px solid rgba(0, 0, 0, 0);
+    background: none;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.search-box.uploading {
+    transform: scale(1.3) translateY(-50px);
+    transition: transform 1s 0.6s;
+
+}
+
+.search-box.uploading .shapeBox img {
+    /* animation: uploadingShadow 1s forwards; */
+    filter: drop-shadow(0px 70px 20px rgba(0, 0, 0, 0.15));
+    transition: filter 1s 0.6s;
+}
+
+.search-box.showingCollection {
+    /* width: 300px; */
+    /* transform: scale(0.52) translate(-489px, -15px); */
+    animation: addStickerToCollection 1s forwards cubic-bezier(1,-0.35,.58,1.08);
+    z-index: 3;
+}
+
+.search-box.showingCollection .shapeBox img {
+    filter: drop-shadow(0px 70px 20px rgba(0, 0, 0, 0));
+    transition: filter 0.2s;
+}
+
+@keyframes addStickerToCollection {
+    30% {
+        /* transform: scale(1.3) translateY(-50px) rotate(30deg); */
+    }
+    100% {
+        transform: scale(0.52) translate(-489px, -15px) rotate(3deg);
+    }   
+}
+
+.search-input {
+    width: 80%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #353535;
+    /* background-color: red; */
+    margin: 10%;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Public Sans', sans-serif;
+    display: inline;
+    vertical-align: middle;
+    overflow: auto;
+    transition: clip-path 1.8s 0.65s;
+    clip-path: inset(0% 0px 0% 0px);
+    resize: none;
+}
+
+.search-input.not-loaded {
+    clip-path: inset(100% 0% 0px 0px);
+}
+
+.search-input::placeholder {
+    color: #353535;
+    opacity: 60%;
+    z-index: -10;
+}
+
+.generate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 300px; */
+    height: 85px;
+    padding: 0px 34px; 
+    font-size: 32px;
+    border-radius: 50px;
+    background: #353535;
+    color: white;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear, transform 0.3s, box-shadow 0.3s;
+}
+
+.invert .generate-btn {
+    background: none;
+    color: #353535;
+}
+
+
+.customizationButtonBox {
+    position: absolute;
+    top: 440px;
+    /* background: red; */
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.customizationButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85px;
+    width: 85px;
+    border-radius: 50px;
+    background: #353535;
+    cursor: pointer;
+    transition: opacity 0.1s linear, transform 0.3s, box-shadow 0.3s;
+}
+.customizationButton.left {
+    transform: rotate(180deg);
+}
+
+.customizationButton.right {}
+
+.generate-btn:hover, .customizationButton:hover {
+    box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px);
+    opacity: 0.7;
+    transition: opacity 0.1s linear, transform 0.3s, box-shadow 0.3s;
+}
+
+.generate-btn.loading {
+    opacity: 0;
+}
+
+.generate-btn.imageCreated {
+    opacity: 1;
+}
+
+.generate-btn.uploading {
+    visibility: hidden;
+    opacity: 0;
+    transition: height 0.4s, visibility 0s 1s, opacity 0.8s linear;
+}
+
+.header.loading {
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    transform: translateY(-40px);
+    transition: height 0.4s, visibility 0s 1s, opacity 0.8s linear, transform 0.9s; 
+}
+
+.header.animateLoading {
+    opacity: 0;
+}
+
+.header.imageCreated {
+    transform: none;
+    opacity: 1;
+}
+
+.header.uploading {
+    opacity: 0;
+}
+
+.invert .generate-btn:hover {
+    box-shadow: none;
+}
+
+.customizationButton.left:hover {
+    transform: translateY(-10px) rotate(180deg);
+    box-shadow: 0px -10px 24px 0px rgba(0, 0, 0, 0.25);
+}
+
+.customizationButtonBox {
+    display: none;
+}
+
+.customizationButtonBox.picking {
+    display: flex;
+}
+
+.customizationButtonBox.uploading {
+    opacity: 0;
+}
+
+.fadeAway {
+    visibility: hidden;
+    opacity: 0;
+    transition: height 0.4s, visibility 0s 1s, opacity 0.8s linear;
+}
+
+.fadeIn {
+    visibility: visible;
+    opacity: 1;
+    transition: height 0.4s 0.1s, visibility 0s 0s, opacity 0.8s linear;
+}
+
+.header.fadeIn {
+    transition: height 0.4s 0s, visibility 0s 0s, opacity 0.8s linear;
+}
+
+.generate-btn.fadeAway, .header.fadeAway {
+    height: 0;
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1; }
+    99% {opacity: 0; }
+    100% {display: none;}    
+}
+
+.lowerButtonBox {
+    position: absolute;
+    top: 780px;
+}
+
+.stickerContainer {
+    position: absolute;
+    top: 350px;
+    width: 800px;
+    display: table;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.stickerContainer.showingCollection {
+    visibility: visible;
+    transition: opacity 0.5s 0.5s;
+    opacity: 1;
+}
+
+.sticker {
+    position: relative;
+    width: 33.3%;
+    float: left;
+}
+
+.stickerImage { 
+    mix-blend-mode: multiply;
+    position: absolute;
+    z-index: 0;
+    width: 50%;
+    padding: 29%;
+    /* background: red; */
+    /* top: 80px; */
+    /* left: 100px; */
+    /* transform: translate(50%, 50%); */
+}
+
+.sticker.placeholder {
+    /* width: 10px; */
+    background-color: red;
+    /* height: 10px; */
+    visibility: hidden;
+}
+
+
+.stickerBackground {
+    padding: 10%;
+    width: 90%;
+    height: 90%;
+    z-index: -1;
+    /* background-color: blue; */
+    position: relative;
+}
+
+.stickerBackground.shadow {
+    position: absolute;
+    z-index: -3;
+    top: -10px;
+    opacity: 0.2;
+    filter: blur(4px);
+    transition: filter 0.8s cubic-bezier(.63,-0.1,.18,1.1), opacity 0.8s cubic-bezier(.63,-0.1,.18,1.1);
+}
+
+.sticker.down {
+    transform: translateY(20%);
+}
+
+.display-none {
+    display: none;
+}
+
+      /* <div className="originalPromptBox">
+                            <div className="start">My wish for 2024 is to...</div>
+                            <div className="userPrompt">{url.prompt}</div>
+                        </div> */
+
+.originalPromptBox {
+    position: absolute;
+    z-index: -2;
+    top: 0px;
+    left: 15px;
+    /* background-color: red; */
+    /* opacity: 0.4; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.originalPromptBox .start {
+    align-self: stretch;
+    text-align: center;
+    /* background-color: orange;    */
+    color: #353535;
+    text-align: center;
+    font-family: Dela Gothic One;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.originalPromptBox .userPrompt {
+    align-self: stretch;
+    text-align: center;
+    /* background-color: green; */
+    color: #353535;
+    text-align: center;
+    font-family: Public Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0 20px;
+}
+
+.stickerContainer .stickerLiftContainer {
+    /* background-color: red; */
+    transition: transform 0.8s cubic-bezier(.63,-0.1,.18,1.1);
+    pointer-events: none;
+
+}
+
+.stickerLiftTarget {
+    /* background: red; */
+    /* opacity: 0.3; */
+}
+
+.stickerContainer.showingCollection .stickerLiftTarget:hover .stickerLiftContainer {
+    /* background: blue; */
+    transform: translateY(-200px) rotate(20deg);
+}
+.stickerLiftTarget:hover .stickerBackground.shadow {
+    opacity: 0.1;
+    filter: blur(24px);
+}
+
+.sticker.local {
+    /* visibility: hidden; */
+    /* z-index: 10; */
+}
+
+.stickerContainer.showingCollection .sticker.local {
+
+}
+
+.stickerLiftContainer .shapeBox {
+    left: -40px;
+}
+
+.search-box .stickerLiftTarget {
+    height: 380px;
+}
+
+.search-box .stickerLiftContainer {
+    height: 100%;
+}
+.search-box .shadow, 
+.search-box .originalPromptBox {
+    visibility: hidden;
+}
+.search-box.showingCollection .shadow, 
+.search-box.showingCollection .originalPromptBox {
+    visibility: visible;
+}
+
+.search-box.showingCollection .stickerLiftTarget .image, .stickerLiftTarget .shapeBox {
+    transition: transform 0.8s cubic-bezier(.63,-0.1,.18,1.1);
+}
+.search-box.showingCollection .stickerLiftTarget:hover .image, .search-box.showingCollection .stickerLiftTarget:hover .shapeBox {
+    /* top: -60px; */
+    transform: translateY(-400px);
+}
+
+.search-box.showingCollection .stickerLiftTarget:hover .stickerLiftContainer {
+    transform: none;
+    /* background-color: purple; */
+}
+
+.search-box .stickerBackground.shadow {
+    /* z-index: 20; */
+    transform: translate(-200px, 17px) scale(1.3);
+}
+
+.search-box .originalPromptBox {
+    /* background: green; */
+    transform: translate(-10px, 30px) rotate(-3deg) scale(0.9);
+}
+
+.search-box .start {
+    font-size: 20px
+}
+
+.search-box .userPrompt {
+    font-size: 42px;
+}
